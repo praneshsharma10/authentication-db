@@ -1,4 +1,5 @@
 import express from 'express';
+import { connectToDatabase } from './database/connectionToDatabase.js';
 
 const app = express();
 
@@ -7,8 +8,9 @@ app.get('/' , (req,res) => {
 
 })
 
+connectToDatabase();
+
 app.listen(3000, () => {
     console.log('server is running on port 3000');
 }
-
 )
