@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import { max } from 'three/tsl';
 //passing the user id to generate the token through specific user 
 export const generateJWTToken = (res, userID) => {
     const token = jwt.sign({ id: userID }, process.env.JWT_SECRET, {
@@ -9,6 +10,7 @@ export const generateJWTToken = (res, userID) => {
 res.cookie("token", token, {
     httpOnly: true, //cookie is not accessible through client side script
     secure: process.env.NODE_ENV === "production", //cookie will only be set in production
-    sameSite: "strict" //cookie will only be set in the same site
+    sameSite: "strict", //cookie will only be set in the same site
+    maxAge: 604800000 //7 days
 
 })
