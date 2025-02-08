@@ -9,6 +9,7 @@ import authRoutes from './routes/route.js';
 
 
 const app = express();
+app.use(express.json() );  // to parse application/json
 
 app.get('/' , (req,res) => {
     res.send('response on request !! ');
